@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routers import qparameter
+from .routers import qparameter, request_body
 
 app = FastAPI()
 
@@ -62,4 +62,5 @@ async def read_file(file_path: str):
     return {"file_path": file_path}
 
 app.include_router(qparameter.router, prefix="/q",)
+app.include_router(request_body.router, prefix="/r",)
 
