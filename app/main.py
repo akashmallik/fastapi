@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from .routers import qparameter
 
 app = FastAPI()
 
@@ -59,3 +60,6 @@ async def read_file(file_path: str):
     In that case, the URL would be: /files//home/johndoe/myfile.txt, with a double slash (//) between files and home.
     """
     return {"file_path": file_path}
+
+app.include_router(qparameter.router, prefix="/q",)
+
